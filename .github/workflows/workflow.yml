@@ -7,8 +7,10 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          Install-Module -Name ghcups
-          Import-Module ghcups
-          Get-Module ghcups
-          Get-Help -Full Install-Ghc
-          Install-Ghc 8.8.3
+          Get-PSRepository
+
+# Install-Module -Name ghcups
+# Import-Module ghcups
+# Get-Module ghcups
+# Get-Help -Full Install-Ghc
+# Install-Ghc 8.8.3
