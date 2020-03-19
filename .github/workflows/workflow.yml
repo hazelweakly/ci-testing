@@ -7,7 +7,7 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          Install-Module -Name ghcups -Force -AllowClobber
+          choco install ghc --version 8.8.1 --side-by-side
 
 # Install-Module -Name ghcups
 # Import-Module ghcups
