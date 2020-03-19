@@ -7,7 +7,7 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          Get-PSRepository
+          Install-Module -Name ghcups -Force -AllowClober
 
 # Install-Module -Name ghcups
 # Import-Module ghcups
