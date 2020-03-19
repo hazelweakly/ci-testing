@@ -7,7 +7,7 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          Install-Module ghcups
+          Install-Module -Name ghcups
           Import-Module ghcups
           Get-Module ghcups
           Get-Help -Full Install-Ghc
