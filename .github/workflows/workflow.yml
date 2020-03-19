@@ -1,0 +1,14 @@
+name: Main workflow
+on: [push]
+jobs:
+  test:
+    name: Test windows
+    runs-on: windows-latest
+    steps:
+      - shell: powershell
+        run: |
+          Install-Module ghcups
+          Import-Module ghcups
+          Get-Module ghcups
+          Get-Help -Full Install-Ghc
+          Install-Ghc 8.8.3
