@@ -5,12 +5,9 @@ jobs:
     name: Test windows
     runs-on: windows-latest
     steps:
-      - shell: powershell
+      - uses: haskell-ci/setup@master
+        with:
+          ghc-version: 8.8.3
+          cabal-version: 3.0.0.0
         run: |
-          choco install ghc --version 8.8.1 --side-by-side
-
-# Install-Module -Name ghcups
-# Import-Module ghcups
-# Get-Module ghcups
-# Get-Help -Full Install-Ghc
-# Install-Ghc 8.8.3
+          cabal user-config diff
