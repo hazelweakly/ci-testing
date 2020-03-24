@@ -5,12 +5,25 @@ jobs:
     name: Test windows
     runs-on: windows-latest
     steps:
+      - uses: actions/cache@v1
+        with:
+          path: C:\Users\runneradmin\AppData\Local\Temp\chocolatey\cabal
+          key: cabal
+      - uses: actions/cache@v1
+        with:
+          path: C:\ProgramData\chocolatey\lib\ghc.8.8.3\tmp
+          key: ghc
       - uses: haskell-ci/setup@master
         with:
           ghc-version: 8.8.3
           cabal-version: 3.0.0.0
       - run: |
           cabal user-config diff
-          ls ~/.cabal
+      - run: |
+          ls $HOME
+        shell: pwsh
+      - run: |
+          ls $HOME/.cabal
+      - run: |
           cat $HOME/.cabal/config
         shell: pwsh
