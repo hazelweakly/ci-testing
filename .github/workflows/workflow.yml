@@ -11,3 +11,6 @@ jobs:
           cabal-version: 3.0.0.0
       - run: |
           cabal user-config diff
+          ls ~/.cabal
+          cat $HOME/.cabal/config
+        shell: pwsh
