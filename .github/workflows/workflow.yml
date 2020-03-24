@@ -20,10 +20,10 @@ jobs:
       - run: |
           cabal user-config update
       - run: |
-          ls $HOME
+          ls $env:APPDATA
         shell: pwsh
       - run: |
-          ls $HOME/.cabal
+          ls $env:APPDATA\cabal
       - run: |
           cat $HOME/.cabal/config
         shell: pwsh
