@@ -1,0 +1,19 @@
+Tool cache is
+
+getCacheDir => process.env['RUNNER_TOOL_CACHE']
+
+_getCacheDirectory() + toolName + semver.clean(version)
+
+=> For Cabal semver-clean is returning null
+
+downloadTool => downloads to RUNNER_TEMP/guid or dest
+
+cacheDir =>
+version = semver.clean or version
+os.arch
+
+createToolPath ( tool, version, arch ) => cache + tool + semver or ver + arch
+
+copy path into toolPath
+
+write .complete => _getCacheDirectory + tool + semver or ver + arch + .complete
