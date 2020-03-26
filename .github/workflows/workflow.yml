@@ -19,5 +19,6 @@ jobs:
           cabal update
       - run: cabal build
       - run: |
-          ls $env:APPDATA
+          ls $env:APPDATA\cabal
+          ls $HOME
         shell: pwsh
