@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
         with:
-          path: C:\Haskell
+          path: .setup-haskell
           key: ghc
       - uses: haskell-ci/setup@add-windows-cache
         with:
@@ -17,6 +17,10 @@ jobs:
       - run: |
           cabal user-config update
           cabal update
+      - run: |
+          ls C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools
+          get-command cabal -or $true
+          get-command ghc -or $true
       - run: cabal build
       - run: |
           ls $env:APPDATA\cabal
