@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/cache@v1
         with:
-          path: ~\.setup-haskell
+          path: C:\Haskell
           key: ghc
       - uses: haskell-ci/setup@add-windows-cache
         with:
