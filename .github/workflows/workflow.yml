@@ -6,21 +6,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/cache@v1
-        with:
-          path: .setup-haskell
-          key: ghc
-      - uses: haskell-ci/setup@add-windows-cache
+      - uses: haskell-ci/setup@master
         with:
           ghc-version: 8.4.4
           cabal-version: 3.0.0.0
       - run: |
           cabal user-config update
           cabal update
-      - run: |
-          ls C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools
-          get-command cabal -or $true
-          get-command ghc -or $true
+      # - run: |
+      #     ls C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools
+      #     C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools\ghc-8.4.4\bin
       - run: cabal build
       - run: |
           ls $env:APPDATA\cabal
