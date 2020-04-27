@@ -1,0 +1,27 @@
+# https://github.com/actions/upload-artifact/issues/5
+
+name: Remove old artifacts
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+
+jobs:
+  things:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          mkdir -p some/directory/tree
+          echo "content" > some/directory/tree/foo.txt
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: some-artifact
+          path: some
+
+  remove-old-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: c-hive/gha-remove-artifacts@v1
+        with:
+          age: "1 minute"
