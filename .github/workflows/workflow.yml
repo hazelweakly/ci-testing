@@ -1,23 +1,14 @@
 name: Main workflow
 on: [push]
 jobs:
-  test:
-    name: Test windows
-    runs-on: windows-latest
+  things:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: haskell-ci/setup@master
+      - run: |
+          mkdir -p some/directory/tree
+          echo "content" > some/directory/tree/foo.txt
+
+      - uses: actions/upload-artifact@v1
         with:
-          ghc-version: 8.4.4
-          cabal-version: 3.0.0.0
-      - run: |
-          cabal user-config update
-          cabal update
-      # - run: |
-      #     ls C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools
-      #     C:\ProgramData\chocolatey\lib\ghc.8.4.4\tools\ghc-8.4.4\bin
-      - run: cabal build
-      - run: |
-          ls $env:APPDATA\cabal
-          ls $HOME
-        shell: pwsh
+          name: some-artifact
+          path: some
