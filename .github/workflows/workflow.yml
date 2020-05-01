@@ -5,6 +5,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: |
-          gcm heat
-          gcm candle
-          gcm light
+          Get-Command heat.exe
+          Get-Command candle.exe
+          Get-Command light.exe
