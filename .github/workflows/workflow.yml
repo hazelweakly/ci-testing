@@ -2,17 +2,9 @@ name: Main workflow
 on: [push]
 jobs:
   things:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-      - env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: |
-          mkdir -p some/directory/tree
-          echo "content" > some/directory/tree/foo.txt
-          echo "$GITHUB_CONTEXT"
-          echo "$GITHUB_CONTEXT" > some/directory/tree/github.json
-
-      - uses: actions/upload-artifact@v1
-        with:
-          name: some-artifact
-          path: some
+      - run: |
+          which heat
+          which candle
+          which light
