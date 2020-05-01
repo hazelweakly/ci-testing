@@ -4,7 +4,8 @@ jobs:
   things:
     runs-on: windows-latest
     steps:
-      - run: |
-          Get-Command heat.exe
-          Get-Command candle.exe
-          Get-Command light.exe
+      - shell: powershell
+        run: |
+          where.exe heat
+          where.exe candle
+          where.exe light
