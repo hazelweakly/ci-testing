@@ -6,6 +6,9 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          where.exe heat
-          where.exe candle
-          where.exe light
+          dir $env:WIX
+          echo $env:WIX
+        # run: |
+        #   where.exe heat
+        #   where.exe candle
+        #   where.exe light
