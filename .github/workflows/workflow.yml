@@ -6,9 +6,17 @@ jobs:
     steps:
       - shell: powershell
         run: |
-          dir $env:WIX
+          dir $env:WIX\bin
           echo $env:WIX
-        # run: |
-        #   where.exe heat
-        #   where.exe candle
-        #   where.exe light
+  # ${HEAT} dir ${PKG_PREFIX} -o allfiles.wxs -nologo -var var.pkg \
+  #         -ag -wixvar -cg ALLFILES -srd -dr INSTALLDIR -sfrag
+  #
+  #
+  # ${CANDLE} -ext WixUIExtension -ext WixUtilExtension            \
+  #         -dversion=${VERSION} -dpkg=${PKG_PREFIX} win32/cryptol.wxs
+  #
+  # ${CANDLE} -ext WixUIExtension -ext WixUtilExtension            \
+  #         -dversion=${VERSION} -dpkg=${PKG_PREFIX} allfiles.wxs
+  #
+  # ${LIGHT} -ext WixUIExtension -ext WixUtilExtension             \
+  #   -sval -o $@ cryptol.wixobj allfiles.wixobj
