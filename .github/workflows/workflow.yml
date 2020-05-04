@@ -5,18 +5,16 @@ jobs:
     runs-on: windows-latest
     steps:
       - shell: powershell
+        env:
+          VERSION: 2.8.1
         run: |
           dir $env:WIX\bin
           echo $env:WIX
-  # ${HEAT} dir ${PKG_PREFIX} -o allfiles.wxs -nologo -var var.pkg \
-  #         -ag -wixvar -cg ALLFILES -srd -dr INSTALLDIR -sfrag
-  #
-  #
-  # ${CANDLE} -ext WixUIExtension -ext WixUtilExtension            \
-  #         -dversion=${VERSION} -dpkg=${PKG_PREFIX} win32/cryptol.wxs
-  #
-  # ${CANDLE} -ext WixUIExtension -ext WixUtilExtension            \
-  #         -dversion=${VERSION} -dpkg=${PKG_PREFIX} allfiles.wxs
-  #
-  # ${LIGHT} -ext WixUIExtension -ext WixUtilExtension             \
-  #   -sval -o $@ cryptol.wixobj allfiles.wixobj
+
+          $env:WIX\bin\heat.exe dir $pwd.Path -o allfiles.wxs -nologo -var var.pkg -ag -wixvar -cg ALLFILES -srd -dr INSTALLDIR -sfrag
+
+          $env:WIX\bin\candle.exe -ext WixUIExtension -ext WixUtilExtension -dversion=$env:VERSION -dpkg=$pwd.Path win32\cryptol.wxs
+
+          $env:WIX\bin\candle.exe -ext WixUIExtension -ext WixUtilExtension -dversion=$env:VERSION -dpkg=$pwd.Path allfiles.wixobj
+
+          $env:WIX\bin\light.exe -ext WixUIExtension -ext WixUtilExtension -sval -o cryptol.msi cryptol.wixobj allfiles.wixobj
