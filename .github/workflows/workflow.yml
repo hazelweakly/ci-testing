@@ -4,6 +4,7 @@ jobs:
   things:
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@v2
       - shell: powershell
         env:
           VERSION: 2.8.1
