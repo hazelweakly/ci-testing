@@ -19,7 +19,7 @@ jobs:
           echo "holla2"
           ls "$pwd"
 
-          & "$env:WIX\bin\candle.exe" -ext WixUIExtension -ext WixUtilExtension -dversion="$env:VERSION" -dpkg="$pwd" allfiles.wixobj
+          & "$env:WIX\bin\candle.exe" -ext WixUIExtension -ext WixUtilExtension -dversion="$env:VERSION" -dpkg="$pwd" allfiles.wxs
 
           echo "holla3"
           ls "$pwd"
