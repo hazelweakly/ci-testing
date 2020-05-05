@@ -5,25 +5,18 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
+
+      - id: cryptol
+        shell: bash
+        run: .github/ci.sh version
+
       - shell: powershell
         env:
           VERSION: 2.8.1
         run: |
           & "$env:WIX\bin\heat.exe" dir "$pwd" -o allfiles.wxs -nologo -var var.pkg -ag -wixvar -cg ALLFILES -srd -dr INSTALLDIR -sfrag
-
-          echo "holla"
-          ls "$pwd"
-
           & "$env:WIX\bin\candle.exe" -ext WixUIExtension -ext WixUtilExtension -dversion="$env:VERSION" -dpkg="$pwd" win32\cryptol.wxs
-
-          echo "holla2"
-          ls "$pwd"
-
           & "$env:WIX\bin\candle.exe" -ext WixUIExtension -ext WixUtilExtension -dversion="$env:VERSION" -dpkg="$pwd" allfiles.wxs
-
-          echo "holla3"
-          ls "$pwd"
-
           & "$env:WIX\bin\light.exe" -ext WixUIExtension -ext WixUtilExtension -sval -o cryptol.msi cryptol.wixobj allfiles.wixobj
 
           echo "holla4"
