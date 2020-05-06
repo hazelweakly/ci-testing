@@ -3,13 +3,28 @@ on: [push, pull_request]
 
 jobs:
   outputs:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.outputs.outputs.changed-files }}
+      cryptol-version: ${{ steps.outputs.outputs.cryptol-version }}
     steps:
       - uses: actions/checkout@v2
-      - shell: bash
-        env:
-          foo: blah
-        run: powershell .github/test.ps1
-      - env:
-          foo: blah
-        run: .github\test.ps1
+        with:
+          fetch-depth: 0
+      - id: outputs
+        run: .github/ci.sh set_outputs ${{ github.sha }}
+
+  foo:
+    runs-on: ubuntu-latest
+    needs: [outputs]
+    steps:
+      - run: echo "hello"
+
+  bundle:
+    runs-on: ubuntu-latest
+    needs: [foo]
+    env:
+      VERSION: ${{ needs.outputs.outputs.cryptol-version }}
+    steps:
+      - run: echo "version is $VERSION"
+      - run: echo "${{ needs.outputs.outputs.changed-files }}"
