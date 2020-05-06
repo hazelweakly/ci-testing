@@ -7,4 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - shell: bash
-        run: .github\test.ps1
+        run: .github/test.ps1
