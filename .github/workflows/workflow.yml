@@ -7,4 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - shell: bash
+        env:
+          foo: blah
+        run: powershell .github/test.ps1
+      - env:
+          foo: blah
         run: powershell .github/test.ps1
