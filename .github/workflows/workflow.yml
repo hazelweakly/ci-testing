@@ -6,4 +6,4 @@ jobs:
     runs-on: windows-latest
     steps:
       - shell: bash
-        run: .github/test.ps1
+        run: exec .github/test.ps1
