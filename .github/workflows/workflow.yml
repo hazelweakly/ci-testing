@@ -22,7 +22,7 @@ jobs:
 
   bundle:
     runs-on: ubuntu-latest
-    needs: [foo]
+    needs: [outputs, foo]
     env:
       VERSION: ${{ needs.outputs.outputs.cryptol-version }}
     steps:
