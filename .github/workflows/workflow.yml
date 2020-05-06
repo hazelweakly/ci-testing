@@ -17,7 +17,7 @@ jobs:
           changed_since="$(git log --since '9 minutes')"
           files="${changed_since:+"$(git diff-tree --no-commit-id --name-only -r '${{ github.sha }}' | xargs)"}"
           echo "changed files are: $files"
-          echo "::set-output name=changed-files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+          echo "::set-output name=changed-files::$files"
 
   build:
     needs: [outputs]
