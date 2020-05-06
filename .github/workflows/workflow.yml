@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - id: get-changed
         run: |
-          files="$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
+          files="$(git diff-tree --no-commit-id --name-only -r '${{ github.sha }}@{7 minutes ago}' | xargs)"
           echo "changed files are: $files"
           echo "::set-output name=changed-files::$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | xargs)"
 
