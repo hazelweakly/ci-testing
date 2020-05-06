@@ -1,38 +1,8 @@
 name: Test Nightly
-on:
-  schedule:
-    - cron: "* * * * *"
+on: [push, pull_request]
 
 jobs:
   outputs:
     runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.get-changed.outputs.changed-files }}
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - id: get-changed
-        run: |
-          changed_since="$(git log --since '9 minutes')"
-          files="${changed_since:+"$(git diff-tree --no-commit-id --name-only -r '${{ github.sha }}' | xargs)"}"
-          echo "changed files are: $files"
-          echo "::set-output name=changed-files::$files"
-
-  build:
-    needs: [outputs]
-    if: ${{ needs.outputs.outputs.changed }}
-    name: Nightly
-
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        ghc: ["8.8.3"]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-haskell@v1.1
-        with:
-          ghc-version: ${{ matrix.ghc }}
-
-      - run: cabal build all
+      - run: echo hello world
