@@ -12,4 +12,4 @@ jobs:
         run: powershell .github/test.ps1
       - env:
           foo: blah
-        run: powershell .github/test.ps1
+        run: .github\test.ps1
