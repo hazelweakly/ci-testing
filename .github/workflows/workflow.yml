@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   wat:
-    runs-on: matrix.cfg.host
+    runs-on: ${{ matrix.cfg.host }}
     strategy:
       matrix:
         cfg:
