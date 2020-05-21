@@ -3,14 +3,17 @@ on: [push, pull_request]
 
 jobs:
   wat:
-    runs-on: ubuntu-latest
+    runs-on: matrix.cfg.host
     strategy:
       matrix:
-        array-a: [1, 2, 3, 4, 5]
-        array-b: [1, 2, 3]
-        idx: [a, b]
+        cfg:
+          - { a: 1, b: 1, c: 1, host: self-hosted }
+          - { a: 2, b: 2, c: 2, host: self-hosted }
+          - { a: 3, b: 3, c: 3, host: self-hosted }
+          - { a: 4, b: 4, c: 4, host: self-hosted }
+          - { a: 5, b: 5, c: 5, host: self-hosted }
+          - { a: 6, b: 6, c: 6, host: self-hosted }
     steps:
-      - run: echo "${{ matrix.idx }}"
-      - run: echo "${{ matrix.array-a }}"
-      - run: echo "${{ matrix.array-b }}"
-      - run: echo "${{ matrix.array-${{ matrix.idx }} }}"
+      - run: echo "${{ matrix.cfg.a }}"
+      - run: echo "${{ matrix.cfg.b }}"
+      - run: echo "${{ matrix.cfg.c }}"
