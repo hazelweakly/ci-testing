@@ -1,30 +1,16 @@
-name: Test Nightly
+name: Test things
 on: [push, pull_request]
 
 jobs:
-  outputs:
+  wat:
     runs-on: ubuntu-latest
-    outputs:
-      changed: ${{ steps.outputs.outputs.changed-files }}
-      cryptol-version: ${{ steps.outputs.outputs.cryptol-version }}
+    strategy:
+      matrix:
+        array-a: [1, 2, 3, 4, 5]
+        array-b: [1, 2, 3]
+        idx: [a, b]
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - id: outputs
-        run: .github/ci.sh set_outputs ${{ github.sha }}
-
-  foo:
-    runs-on: ubuntu-latest
-    needs: [outputs]
-    steps:
-      - run: echo "hello"
-
-  bundle:
-    runs-on: ubuntu-latest
-    needs: [outputs, foo]
-    env:
-      VERSION: ${{ needs.outputs.outputs.cryptol-version }}
-    steps:
-      - run: echo "version is $VERSION"
-      - run: echo "${{ needs.outputs.outputs.changed-files }}"
+      - run: echo "${{ matrix.idx }}"
+      - run: echo "${{ matrix.array-a }}"
+      - run: echo "${{ matrix.array-b }}"
+      - run: echo "${{ matrix.array-${{ matrix.idx }} }}"
