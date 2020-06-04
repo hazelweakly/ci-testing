@@ -15,3 +15,5 @@ jobs:
         with:
           ghc-version: "8.8"
       - run: ghc --version
+      - run: which -a ghc
+        shell: bash
