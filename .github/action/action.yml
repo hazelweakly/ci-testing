@@ -1,9 +1,0 @@
-name: stuff
-description: ""
-inputs:
-  ssh-key:
-    required: true
-    description: ""
-runs:
-  using: node12
-  main: index.js
