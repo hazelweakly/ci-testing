@@ -24,3 +24,4 @@ jobs:
           curl -Lf "https://downloads.haskell.org/~ghcup/0.1.5/x86_64-apple-darwin-ghcup-0.1.5-p2" > ~/.ghcup/bin/ghcup
           ghcup set 8.8.3
           echo $PATH
+          ghc --version
