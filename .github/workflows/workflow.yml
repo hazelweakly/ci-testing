@@ -12,8 +12,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-haskell@v1.1
+        id: haskell
         with:
           ghc-version: "8.8"
       - run: ghc --version
       - run: which -a ghc
         shell: bash
+      - run: |
+          echo ${{ steps.haskell.outputs.ghc-path }}
+          echo ${{ steps.haskell.outputs.ghc-exe }}
+
