@@ -3,25 +3,7 @@ on: [push, pull_request]
 
 jobs:
   wat:
-    strategy:
-      matrix:
-        os: [macos-latest]
-      fail-fast: false
-
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-haskell@v1.1
-        id: haskell
-        with:
-          ghc-version: "8.8"
-      - run: ghc --version
-      - run: which -a ghc
-        shell: bash
-      - run: |
-          echo ${{ steps.haskell.outputs.ghc-path }}
-          echo ${{ steps.haskell.outputs.ghc-exe }}
-          curl -Lf "https://downloads.haskell.org/~ghcup/0.1.5/x86_64-apple-darwin-ghcup-0.1.5-p2" > ~/.ghcup/bin/ghcup
-          ghcup set 8.8.3
-          echo $PATH
-          ghc --version
+      - if: "startsWith(github.ref, 'refs/tags/v')"
+        run: echo "sup"
