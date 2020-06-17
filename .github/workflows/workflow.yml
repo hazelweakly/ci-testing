@@ -1,5 +1,10 @@
 name: Test things
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+      - "new-*"
+  pull_request:
 
 jobs:
   wat:
