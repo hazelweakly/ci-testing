@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: echo ${{ github.base_ref }}
+      - run: echo ${{ github.base_ref }} ${{ github.head_ref }}
