@@ -1,9 +1,16 @@
 name: Test things
-on: [push, pull_request]
+on:
+  push:
+    tags:
+      - "v**"
+    branches:
+      - master
+      - "new-*"
+  pull_request:
 
 jobs:
   wat:
     runs-on: ubuntu-latest
     steps:
-      - if: "startsWith(github.ref, 'refs/tags/v')"
-        run: echo "sup"
+      - uses: actions/checkout@v2
+      - run: echo ${{ github.base_ref }} ${{ github.head_ref }}
