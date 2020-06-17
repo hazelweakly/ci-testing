@@ -12,5 +12,6 @@ jobs:
   wat:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - if: "startsWith(github.ref, 'refs/tags/v')"
         run: echo "sup"
