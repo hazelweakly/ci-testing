@@ -7,7 +7,7 @@ phases:
   build:
     commands:
       - echo "building"
-  test:
+  post_build:
     commands:
       - echo "running tests"
       - bash metrics.sh > logs.json
