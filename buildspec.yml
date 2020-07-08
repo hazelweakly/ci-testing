@@ -7,6 +7,7 @@ phases:
   build:
     commands:
       - echo "building"
+      - echo "more building output"
   post_build:
     commands:
       - echo "running tests"
