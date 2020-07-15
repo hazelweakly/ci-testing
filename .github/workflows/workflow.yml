@@ -5,5 +5,11 @@ jobs:
   wat:
     runs-on: ubuntu-latest
     steps:
-      - if: "startsWith(github.ref, 'refs/tags/v')"
-        run: echo "sup"
+      - run: |
+          hub release show v2.9.0
+          if hub release show v2.9.0; then
+            echo "howdy"
+          else
+            echo "making release"
+            hub release create -d v2.9.0
+          fi
