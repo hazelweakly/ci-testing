@@ -11,7 +11,7 @@ jobs:
             echo "howdy"
           else
             echo "making release"
-            hub release create -d v2.9.0
+            hub release create -d -m "" v2.9.0
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
