@@ -1,0 +1,13 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "installing"
+  build:
+    commands:
+      - echo "building"
+  test:
+    commands:
+      - echo "running tests"
+      - bash metrics.sh
