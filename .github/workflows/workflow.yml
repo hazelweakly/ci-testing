@@ -5,13 +5,4 @@ jobs:
   wat:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          if hub release show v2.9.0; then
-            echo "howdy"
-          else
-            echo "making release"
-            hub release create -d -m "title" -m "bodeh" v2.9.0
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: echo hello world
