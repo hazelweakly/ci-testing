@@ -1,0 +1,11 @@
+{
+  "guid": "X",
+  "dependencies": ["Y", "Z"],
+  "all_dependencies_evaluated_fully": true,
+  "evaluation_typechecked": true,
+  "evaluation_full": true,
+  "expected_result": A,
+  "success": B,
+  "proof_obligations": 1,
+  "time_elapsed": 42
+}
