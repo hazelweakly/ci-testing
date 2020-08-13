@@ -5,4 +5,19 @@ jobs:
   wat:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello world
+      - uses: actions/cache@v2
+        with:
+          path: tst
+          key: wew-lad
+      - run: |
+          mkdir tst
+          echo hello world > tst/foo.bleh
+  wat2:
+    needs: [wat]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/cache@v2
+        with:
+          path: tst
+          key: wew-lad
+      - run: cat tst/foo.bleh
