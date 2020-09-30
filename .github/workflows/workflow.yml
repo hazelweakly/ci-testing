@@ -5,10 +5,13 @@ jobs:
   wat:
     runs-on: windows-latest
     steps:
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: zlib
       - uses: haskell-CI/setup@main
         with:
           ghc-version: 8.10.2
           cabal-version: 3.2.0.0
-      - run: choco install -y msys2
-      - run: refreshenv
-      - run: mingw64-pkg zlib || pacman -Sy mingw-w64-x86_64-zlib
+      - run: choco install -y cabal --reinstall --force
+      - run: mingw64-pkg install zlib || pacman -Sy mingw-w64-x86_64-zlib
