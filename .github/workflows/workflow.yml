@@ -6,4 +6,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/setup-haskell@v1
-      - run: pacman -S mingw-w64-x86_64-zlib
+        with:
+          ghc: 8.10.2
+          cabal: 3.4.0.0
+      - run: pacman -Sy mingw-w64-x86_64-zlib
