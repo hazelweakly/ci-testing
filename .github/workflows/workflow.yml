@@ -13,5 +13,22 @@ jobs:
         with:
           ghc-version: 8.10.2
           cabal-version: 3.2.0.0
+
+      - shell: msys2 {0}
+        run: cabal run
+        continue-on-error: true
+      - shell: powershell
+        run: cabal run
+        continue-on-error: true
+
       - run: choco install -y cabal --reinstall --force
+      - run: refreshenv
       - run: mingw64-pkg install zlib || pacman -Sy mingw-w64-x86_64-zlib
+        continue-on-error: true
+
+      - shell: msys2 {0}
+        run: cabal run
+        continue-on-error: true
+      - shell: powershell
+        run: cabal run
+        continue-on-error: true
