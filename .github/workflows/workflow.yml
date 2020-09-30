@@ -5,8 +5,10 @@ jobs:
   wat:
     runs-on: windows-latest
     steps:
-      - uses: actions/setup-haskell@v1
+      - uses: haskell-CI/setup@main
         with:
-          ghc: 8.10.2
-          cabal: 3.4.0.0
-      - run: pacman -Sy mingw-w64-x86_64-zlib
+          ghc-version: 8.10.2
+          cabal-version: 3.2.0.0
+      - run: choco install -y msys2
+      - run: refreshenv
+      - run: mingw64-pkg zlib || pacman -Sy mingw-w64-x86_64-zlib
